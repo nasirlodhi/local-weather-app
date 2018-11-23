@@ -27,6 +27,7 @@ interface ICurrentWeatherData {
 })
 export class WeatherService {
   constructor(private httpClient: HttpClient) {}
+
   getCurrentWeather(city: string, country: string): Observable<ICurrentWeather> {
     return this.httpClient
       .get<ICurrentWeatherData>(
@@ -46,6 +47,7 @@ export class WeatherService {
       description: data.weather[0].description,
     }
   }
+
   private convertKelvinToFahrenheit(kelvin: number): number {
     return (kelvin * 9) / 5 - 459.67
   }
